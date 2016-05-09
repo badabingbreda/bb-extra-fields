@@ -1,0 +1,23 @@
+
+
+.slider-field-flex {
+  display: -webkit-flex;
+  display: -flex;
+}
+.slider-field-flex .flex-item {
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.slider-field-flex .slider-value {
+	width:80px;
+	min-width:60px;
+	padding: 0px 5px;
+}
+
+.slider-field-flex .slider-slider {
+	-webkit-flex: 1;
+			flex: 1;
+			padding-top:4px;
+}

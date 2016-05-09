@@ -1,0 +1,20 @@
+.bb-geocode-field input[type="button"] {
+	padding:2px 5px;
+	margin:3px;
+	float:none;
+	background-color: #ccc;
+	border-color: #999;
+}
+
+.bb-geocode-field input[type="button"]:hover {
+	background-color: #000;
+}
+input.geo-button.green[type="button"] {
+	background-color: #060;
+	color: #fff;
+}
+
+input.geo-button.red[type="button"] {
+	background-color: #900;
+	color: #fff;
+}

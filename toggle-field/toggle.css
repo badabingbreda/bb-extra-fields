@@ -1,0 +1,44 @@
+
+.toggle-field {
+    overflow: hidden;
+}
+.toggle-title {
+  margin-bottom: 6px;
+}
+.toggle-field input {
+  display: none;
+}
+.toggle-field label {
+  float: left;
+}
+.toggle-field label {
+  display: inline-block;
+  width: auto;
+  color: rgba(0, 0, 0, 0.3);
+  font-weight: normal;
+  text-align: center;
+  text-shadow: none;
+  padding: 2px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition:    all 0.1s ease-in-out;
+  -ms-transition:     all 0.1s ease-in-out;
+  -o-transition:      all 0.1s ease-in-out;
+  transition:         all 0.1s ease-in-out;
+}
+.toggle-field label:hover {
+    cursor: pointer;
+}
+.toggle-field input:checked + label {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: rgba(255,255,255,1);
+}
+.toggle-field label:first-of-type {
+  border-radius: 4px 0 0 4px;
+}
+.toggle-field label:last-of-type {
+  border-radius: 0 4px 4px 0;
+}
