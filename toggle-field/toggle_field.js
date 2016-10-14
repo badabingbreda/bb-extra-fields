@@ -58,7 +58,8 @@
 		// make sure the FLBuilder exists
 		if ( typeof FLBuilder != 'object' ) return;
 		// have the radio:checked toggle take place
-		$( 'body' ).delegate( '.fl-builder-settings-fields :radio:checked' , 'change' ,  FLBuilder._settingsSelectChanged );
+		$( 'body' ).delegate( '.fl-builder-settings-fields :radio:checked' , 'change' ,  function () { toggleChanged($(this));  } );
+
 		// toggle fields, tabs, sections when loading the module-settings
 		$.onCreate( '.fl-lightbox-header' , function () { $( '.fl-lightbox-content .fl-builder-settings-fields :radio:checked' ).each( function ( ) { toggleChanged( $( this ) ); } ); } , true );
 	});

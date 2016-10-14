@@ -98,6 +98,8 @@ function fl_toggle_field_true( $name , $value , $field ) {
  * @return void
  */
 function sw_enqueue_toggle() {
-	wp_enqueue_style( 'bbtoggle-css', BBEXTRA_FIELDS_URL . 'toggle-field/toggle.css' , null , BBEXTRA_FIELDS_VERSION , 'all' );
-  wp_enqueue_script( 'bbtoggle-js', BBEXTRA_FIELDS_URL . 'toggle-field/toggle_field.js' , null , BBEXTRA_FIELDS_VERSION , true );
+  if ( class_exists( 'FLBuilderModel' ) && FLBuilderModel::is_builder_active() ) {
+  	wp_enqueue_style( 'bbtoggle-css', BBEXTRA_FIELDS_URL . 'toggle-field/toggle.css' , null , BBEXTRA_FIELDS_VERSION , 'all' );
+    wp_enqueue_script( 'bbtoggle-js', BBEXTRA_FIELDS_URL . 'toggle-field/toggle_field.js' , null , BBEXTRA_FIELDS_VERSION , true );
+  }
 }
