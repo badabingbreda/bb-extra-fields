@@ -24,6 +24,18 @@ add_action('fl_builder_control_slider', 'fl_slider_field', 1, 3);
  */
 function fl_sliderrange_field ( $name , $value , $field ) {
 
+  $field = array_merge(
+      array( 'settings' => array(
+        'min' => 0 ,
+        'max' => 10 ,
+        'defmin' => 0 ,
+        'defmax' => 10 ,
+        'value' => '0|10' ,
+        'step' => 1 ,
+        'color' => '#666666'
+      )
+    ) , $field );
+
 	if ( sizeof( $value = explode( '|' , $value ) ) !== 2 ) {
     $value = array ( $field[ 'settings' ][ 'defmin' ], $field[ 'settings' ]['defmax' ] );
   }
@@ -64,27 +76,32 @@ function fl_sliderrange_field ( $name , $value , $field ) {
 
 function fl_slider_field ( $name , $value , $field ) {
 
-  switch ($field[ 'settings' ][ 'range' ]) {
-    case "min":
-    case "max":
-      $range = $field[ 'settings' ][ 'range' ];
-      break;
-  }
+
+  $field = array_merge(
+      array( 'settings' => array(
+        'min' => 0 ,
+        'max' => 10 ,
+        'range' => 'min',
+        'value' => 10 ,
+        'step' => 1 ,
+        'color' => '#666666'
+      )
+    ) , $field );
+
   if ( $value==null ) $value = $field[ 'settings' ][ 'value' ];
+
 ?>
 <script>
 ( function( $ ) {
   $( function( ) {
     $( "#slider-<?php echo $name ; ?>" ).slider( {
-      <?php if ($range) echo 'range: "'.$range.'",' ; ?>
+      <?php if ( isset($field['settings']['range']) ) echo 'range: "'.$field['settings']['range'].'",' ; ?>
       min: <?php echo $field[ 'settings' ][ 'min' ];?>,
       max: <?php echo $field[ 'settings' ][ 'max' ];?>,
-      value: <?php echo $value; ?> ,
-      <?php if ( $field[ 'settings' ][ 'step' ] != null ) { ?>
+      value: <?php echo $field['settings']['value']; ?>,
+      <?php if ( isset( $field[ 'settings' ][ 'step' ] ) ) { ?>
       step: <?php echo $field[ 'settings' ][ 'step' ]; ?>,
-      <?php
-      }
-      ?>
+      <?php } ?>
       slide: function( event, ui ) {
         $( "#slid<?php echo $name ; ?>" ).val( ui.value );
         $( "#<?php echo $name ; ?>" ).attr( "value",ui.value );
@@ -97,7 +114,7 @@ function fl_slider_field ( $name , $value , $field ) {
 <div class="slider-field">
   <div class="slider-field-flex">
     <div class="flex-item slider-value">
-      <input type="text" id="slid<?php echo $name; ?>" readonly style="border:0; color:<?php echo ( isset($field['settings']['color'] ) ) ? $field[ 'settings' ][ 'color' ] : '#f6931f' ;?>;font-weight:bold;">
+      <input type="text" id="slid<?php echo $name; ?>" readonly style="border:0; color:<?php echo  $field['settings']['color'] ;?>;font-weight:bold;">
     </div>
     <div class="flex-item slider-slider">
       <div id="slider-<?php echo $name ; ?>">

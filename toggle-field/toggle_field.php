@@ -50,18 +50,24 @@ add_action('fl_builder_control_toggle', 'fl_toggle_field_true', 1, 3);
  */
 function fl_toggle_field_true( $name , $value , $field ) {
 
-  $offcolor = array_key_exists( 'offcolor' , $field ) ? $field[ 'offcolor' ] : '#e4e4e4';
-  $oncolor = array_key_exists( 'oncolor' , $field ) ? $field[ 'oncolor' ] : '#A5DC86';
+  // merge settings with default settings
+  $field = array_merge(
+      array( 'settings' => array(
+        'oncolor' => '#e4e4e4' ,
+        'offcolor' => '#a5dc86' ,
+      )
+    ) , $field );
+
   $buttoncount = count($field['options']);
 
 ?>
 <div class="toggle-field">
   <style>
     .toggle-field .<?php echo $name; ?> {
-      background-color: <?php echo $offcolor; ?>;
+      background-color: <?php echo $field['offcolor']; ?>;
     }
       .toggle-field  .<?php echo $name; ?>:checked + .<?php echo $name; ?> {
-      background-color: <?php echo $oncolor; ?>;
+      background-color: <?php echo $field['oncolor']; ?>;
 }
   </style>
 <?php
